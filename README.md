@@ -20,3 +20,7 @@ Capture packets:
 - IMAP
 - SNMP 
 - IRC
+
+# Tested
+Kali Linux 2.0
+Debian 8.0
