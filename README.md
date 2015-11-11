@@ -8,3 +8,15 @@ Tool development for monitoring packets in local networks.
  $ chmod +x snow.py
 
  $ ./snow.py
+
+# Functionality
+Capture packets:
+- SSH
+- TELNET
+- FTP
+- HTTP
+- SMTP 
+- POP3 
+- IMAP
+- SNMP 
+- IRC
