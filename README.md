@@ -22,5 +22,8 @@ Capture packets:
 - IRC
 
 # Tested
--Kali Linux 2.0
--Debian 8.0
+- Kali Linux 2.0
+- Debian 8.0
+
+#Requirements
+- Python 2.7
