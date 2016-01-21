@@ -1,5 +1,5 @@
 # Sn0w
-Tool development for monitoring packets in local networks.
+Tool development for monitoring and capture packets in local networks.
 
 # Install
 
