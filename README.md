@@ -1,9 +1,9 @@
 # Sn0w
-Tool development for monitoring and capture packets in local networks.
+Tool development to monitoring and capture packets in local networks.
 
 # Install
 
- $ git clone https://github.com/54l0m0n/Sn0w/blob/master/sn0w.py
+ $ git clone https://github.com/54l0m0n/Sn0w.git
 
  $ chmod +x snow.py
 
