@@ -17,7 +17,8 @@ print """"
 
 net_interface = raw_input ("Insert your network interface: ")
 filter_message=raw_input("Insert the protocol: ")
-arquivo = open("sniffer_output", "a") # gerando log. do arquivo
+arquivo = open("sniffer_output", "a") # creat log file
+os.system("ifconfig %s promisc"%(net_interface))
 
 def s0ph0s_TCP(snin):
         if snin.haslayer(TCP) and snin.getlayer(TCP).dport == 21 and snin.haslayer(Raw): # FTP service          
@@ -51,4 +52,6 @@ def s0ph0s_TCP(snin):
                 print snin.getlayer(Raw).load
 		arquivo.write("%s \r\n" % snin.getlayer(Raw))
 sniff(iface=net_interface, prn=s0ph0s_TCP, store=0) # store = 0; not allocate in memory 
-arq.close() 
+arq.close()
+
+os.system("eth0 %s -promisc" %(net_interface)) 
