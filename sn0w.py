@@ -3,7 +3,7 @@
 from scapy.all import *
 from scapy.error import Scapy_Exception
 
-print """"
+print """
   ██████  ███▄    █  ▒█████   █     █░
 ▒██    ▒  ██ ▀█   █ ▒██▒  ██▒▓█░ █ ░█░
 ░ ▓██▄   ▓██  ▀█ ██▒▒██░  ██▒▒█░ █ ░█ 
