@@ -110,7 +110,8 @@ def Snin0w(op):
 			os.system("ifconfig %s -promisc" %(net_interface))
 			
  		elif op_1 == "0":
-			Men()
+			op = Men()
+			Snin0w(op)
 	
 	elif  op == "0":	
 		os.system("exit")
