@@ -3,7 +3,11 @@
 from scapy.all import *
 from scapy.error import Scapy_Exception
 
-print """
+__AUTHOR__	= "S0ph0s"
+
+def Ban():
+	os.system("clear")
+	print """\033[1;36m 
   ██████  ███▄    █  ▒█████   █     █░
 ▒██    ▒  ██ ▀█   █ ▒██▒  ██▒▓█░ █ ░█░
 ░ ▓██▄   ▓██  ▀█ ██▒▒██░  ██▒▒█░ █ ░█ 
@@ -13,45 +17,105 @@ print """
 ░ ░▒  ░ ░░ ░░   ░ ▒░  ░ ▒ ▒░   ▒ ░ ░  
 ░  ░  ░     ░   ░ ░ ░ ░ ░ ▒    ░   ░  
       ░           ░     ░ ░      ░  
-"""
+	\033[1;m"""
+	
+def Men():
+	Ban()
+	print "\033[1;34m Select from Menu: \n\n[1] Capture all packets \n[2] Filter packets/protocol\n\n[0] Exit\n\033[1;m"
+	op = raw_input ("\033[1;34mSelect> \033[1;m") 
+	return op
 
-net_interface = raw_input ("Insert your network interface: ")
-filter_message=raw_input("Insert the protocol: ")
-arquivo = open("sniffer_output", "a") # creat log file
-os.system("ifconfig %s promisc"%(net_interface))
+def Snin0w(op):
+	if op == "1":
+		net_interface = raw_input ("\033[1;34mInsert your network interface: \033[1;m")
+		fil = open("sniffer_output.cap", "a") # creating log file
+		os.system("ifconfig %s promisc"%(net_interface)) # promisc mode
 
-def s0ph0s_TCP(snin):
-        if snin.haslayer(TCP) and snin.getlayer(TCP).dport == 21 and snin.haslayer(Raw): # FTP service          
-                print snin.getlayer(Raw).load
-		arquivo.write("%s \r\n" % snin.getlayer(Raw))
-	if snin.haslayer(TCP) and snin.getlayer(TCP).dport == 22 and snin.haslayer(Raw): # SSH service
-                print snin.getlayer(Raw).load
-		arquivo.write("%s \r\n" % snin.getlayer(Raw))
-	if snin.haslayer(TCP) and snin.getlayer(TCP).dport == 23 and snin.haslayer(Raw): # TELNET service    
-                print snin.getlayer(Raw).load
-		arquivo.write("%s \r\n" % snin.getlayer(Raw))
-	if snin.haslayer(TCP) and snin.getlayer(TCP).dport == 25 and snin.haslayer(Raw): # SMTP service         
-                print snin.getlayer(Raw).load
-		arquivo.write("%s \r\n" % snin.getlayer(Raw))
-	if snin.haslayer(TCP) and snin.getlayer(TCP).dport == 80 and snin.haslayer(Raw): # HTTP service         
-                print snin.getlayer(Raw).load
-		arquivo.write("%s \r\n" % snin.getlayer(Raw))
-	if snin.haslayer(TCP) and snin.getlayer(TCP).dport == 110 and snin.haslayer(Raw): # POP3 service         
-                print snin.getlayer(Raw).load
-		arquivo.write("%s \r\n" % snin.getlayer(Raw))
-	if snin.haslayer(TCP) and snin.getlayer(TCP).dport == 143 and snin.haslayer(Raw): # IMAP service        
-                print snin.getlayer(Raw).load
-		arquivo.write("%s \r\n" % snin.getlayer(Raw))
-	if snin.haslayer(TCP) and snin.getlayer(TCP).dport == 133 and snin.haslayer(Raw): # IRC service       
-                print snin.getlayer(Raw).load
-		arquivo.write("%s \r\n" % snin.getlayer(Raw))
-	if snin.haslayer(TCP) and snin.getlayer(TCP).dport == 161 and snin.haslayer(Raw): # SNMP service
-                print snin.getlayer(Raw).load
-		arquivo.write("%s \r\n" % snin.getlayer(Raw))
-	if snin.haslayer(TCP) and snin.getlayer(TCP).dport == 194 and snin.haslayer(Raw): # IRC service       
-                print snin.getlayer(Raw).load
-		arquivo.write("%s \r\n" % snin.getlayer(Raw))
-sniff(iface=net_interface, prn=s0ph0s_TCP, store=0) # store = 0; not allocate in memory 
-arq.close()
+		def s0ph0s_TCP(snin):
+        		if snin.haslayer(TCP) and snin.haslayer(Raw): # all services          
+                		print snin.getlayer(Raw).load
+				fil.write("%s \r\n" % snin.getlayer(Raw))
+		sniff(iface=net_interface, prn=s0ph0s_TCP, store=0) # store = 0; not allocate in memory 
+		fil.close()
+		os.system("eth0 %s -promisc" %(net_interface)) 
 
-os.system("eth0 %s -promisc" %(net_interface)) 
+
+	elif op == "2":
+		os.system("clear")
+		Ban()
+		print "\033[1;34m Select from Menu: \n\n[1] Listen Port \n[2] Listen Protocol\n\n[0] Exit\n\033[1;m"
+		op_1 = raw_input ("\033[1;34mSelect> \033[1;m")
+		if op_1 == "1":
+			net_interface = raw_input ("\033[1;34mInsert your network interface: \033[1;m")
+			filter_message = raw_input("\033[1;34mInsert Port: \033[1;m")
+			fil = open("sniffer_output.cap", "a") # creat log file
+			os.system("ifconfig %s promisc"%(net_interface))
+
+			def s0ph0s_TCP(snin):
+				if filter_message == "21":
+				 	if snin.haslayer(TCP) and snin.getlayer(TCP).dport == 21 and snin.haslayer(Raw): # FTP
+				  		print snin.getlayer(Raw).load
+						arquivo.write("%s \r\n" % snin.getlayer(Raw))
+				if filter_message == "22":
+					if snin.haslayer(TCP) and snin.getlayer(TCP).dport == 22 and snin.haslayer(Raw): # SSH
+						print snin.getlayer(Raw).load
+						arquivo.write("%s \r\n" % snin.getlayer(Raw))
+				if filter_message == "23":
+					if snin.haslayer(TCP) and snin.getlayer(TCP).dport == 23 and snin.haslayer(Raw): # TELNET 
+					      	print snin.getlayer(Raw).load
+						arquivo.write("%s \r\n" % snin.getlayer(Raw))
+				if filter_message == "25":
+					if snin.haslayer(TCP) and snin.getlayer(TCP).dport == 25 and snin.haslayer(Raw): # SMTP         
+						print snin.getlayer(Raw).load
+						arquivo.write("%s \r\n" % snin.getlayer(Raw))
+				if filter_message == "80":	
+					if snin.haslayer(TCP) and snin.getlayer(TCP).dport == 80 and snin.haslayer(Raw): # HTTP         
+				       		print snin.getlayer(Raw).load
+						arquivo.write("%s \r\n" % snin.getlayer(Raw))
+				if filter_message == "110":
+					if snin.haslayer(TCP) and snin.getlayer(TCP).dport == 110 and snin.haslayer(Raw): # POP3        
+						print snin.getlayer(Raw).load
+						arquivo.write("%s \r\n" % snin.getlayer(Raw))
+				if filter_message == "143":	
+					if snin.haslayer(TCP) and snin.getlayer(TCP).dport == 143 and snin.haslayer(Raw): # IMAP       
+						print snin.getlayer(Raw).load
+						arquivo.write("%s \r\n" % snin.getlayer(Raw))
+				if filter_message == "133":
+					if snin.haslayer(TCP) and snin.getlayer(TCP).dport == 133 and snin.haslayer(Raw): # IRC       
+						print snin.getlayer(Raw).load
+						arquivo.write("%s \r\n" % snin.getlayer(Raw))
+				if filter_message == "161":
+					if snin.haslayer(TCP) and snin.getlayer(TCP).dport == 161 and snin.haslayer(Raw): # SNMP
+						print snin.getlayer(Raw).load
+						arquivo.write("%s \r\n" % snin.getlayer(Raw))
+				if filter_message == "194":
+					if snin.haslayer(TCP) and snin.getlayer(TCP).dport == 194 and snin.haslayer(Raw): # IRC       
+				       		print snin.getlayer(Raw).load
+						arquivo.write("%s \r\n" % snin.getlayer(Raw))
+			sniff(iface=net_interface, prn=s0ph0s_TCP, store=0) # store = 0 -> not allocate in memory
+			fil.close()
+			os.system("ifconfig %s -promisc" %(net_interface))
+		
+		elif op_1 == "2":
+			net_interface = raw_input ("\033[1;34mInsert your network interface: \033[1;m")
+			filter_message=raw_input("\033[1;34mInsert Protocol: \033[1;m")
+			fil = open("sniffer_output.cap", "a") # creat log file
+			os.system("ifconfig %s promisc"%(net_interface))
+			def s0ph0s_TCP(snin):
+				if snin.haslayer(TCP) and snin.getlayer(TCP).dport == filter_message and snin.haslayer(Raw):        
+					print snin.getlayer(Raw).load
+					arquivo.write("%s \r\n" % snin.getlayer(Raw))
+			sniff(iface=net_interface, prn=s0ph0s_TCP, store=0) # store = 0 -> not allocate in memory
+			fil.close()
+			os.system("ifconfig %s -promisc" %(net_interface))
+			
+ 		elif op_1 == "0":
+			Men()
+	
+	elif  op == "0":	
+		os.system("exit")
+		
+
+op = Men()
+Snin0w(op)
+
