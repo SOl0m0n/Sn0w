@@ -1,5 +1,8 @@
 # Sn0w
-Tool development to monitoring and capture packets in local networks.
+
+![sn0w](http://i.imgur.com/VjCZIib.png)
+
+Tool development to monitoring and capture packets in local area networks.
 
 # Install
 
@@ -9,9 +12,13 @@ Tool development to monitoring and capture packets in local networks.
 
  $ ./snow.py
 
+# Features
+- Capture/Filter packets 
+- Capture/Filter protocol 
+- Capture credential
+
 # Functionality
-Capture packets:
-- SSH
+List of the protocols/packets supported: 
 - TELNET
 - FTP
 - HTTP
