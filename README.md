@@ -1,6 +1,6 @@
 # Sn0w
 
-![sn0w](http://i.imgur.com/VjCZIib.png)
+![sn0w](http://i.imgur.com/HJ21Vtp.png)
 
 Tool development to monitoring and capture packets in local area networks.
 
