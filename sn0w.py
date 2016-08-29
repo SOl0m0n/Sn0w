@@ -3,7 +3,7 @@
 from scapy.all import *
 from scapy.error import Scapy_Exception
 
-__AUTHOR__	= "S0ph0s"
+__AUTHOR__	= "s0ph0s"
 
 def Ban():
 	os.system("clear")
@@ -21,7 +21,7 @@ def Ban():
 	
 def Men():
 	Ban()
-	print "\033[1;34m Select from Menu: \n\n[1] Capture all packets \n[2] Filter packets/protocol\n\n[0] Exit\n\033[1;m"
+	print "\033[1;34m Select from Menu: \n\n[1] Capture all packets \n[2] Filter packets/protocol\n[3] MiTM ON/OF\n\n[0] Exit\n\033[1;m"
 	op = raw_input ("\033[1;34mSelect> \033[1;m") 
 	return op
 
@@ -113,10 +113,22 @@ def Snin0w(op):
 			op = Men()
 			Snin0w(op)
 	
+	elif  op == "3":
+		os.system("clear")
+		print "\033[1;34m Select from Menu: \n\n[1] ON MiTM \n[2] OFF MiTM\n\033[1;m"
+		op_3 = raw_input ("\033[1;34mSelect> \033[1;m")
+		if op_3 == "1":
+			os.system("echo “1” > /proc/sys/net/ipv4/ip_forward")
+			ip = raw_input ("\033[1;34mInsert your IP address: \033[1;m")
+			gw = raw_input ("\033[1;34mInsert your fake gateway: \033[1;m")
+			os.system("arpspoof -i %s -t %s %s" %(net_interface,ip,gw))
+		if op_1 == "2":
+			os.system("echo “0” > /proc/sys/net/ipv4/ip_forward")
+
+
 	elif  op == "0":	
 		os.system("exit")
 		
 
 op = Men()
 Snin0w(op)
-
