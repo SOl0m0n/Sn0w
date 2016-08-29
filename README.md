@@ -20,7 +20,7 @@ Tool development to monitoring and capture packets in local area networks.
 - Attack Main in The Middle(MiTM)
 
 # Functionality
-List of the protocols/packets supported: 
+List of the filter protocols/packets:
 - TELNET
 - FTP
 - HTTP
