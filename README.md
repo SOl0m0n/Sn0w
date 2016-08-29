@@ -1,6 +1,6 @@
 # Sn0w
 
-![sn0w](http://i.imgur.com/HJ21Vtp.png)
+![sn0w](https://i.imgur.com/Z91AjNK.png)
 
 Tool development to monitoring and capture packets in local area networks.
 
@@ -27,6 +27,8 @@ List of the protocols/packets supported:
 - IMAP
 - SNMP 
 - IRC
+- RLOGIN
+- NNTP
 
 # Tested
 - Kali Linux 2.0
