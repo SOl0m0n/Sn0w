@@ -23,7 +23,7 @@ def Men():
 	Ban()
 	print "\033[1;34m Select from Menu: \n\n[1] Capture all packets \n[2] Filter packets/protocol\n[3] MiTM ON/OF\n\n[0] Exit\n\033[1;m"
 	op = raw_input ("\033[1;34mSelect> \033[1;m") 
-	return op
+	Snin0w(op)
 
 def Snin0w(op):
 	if op == "1":
@@ -43,7 +43,7 @@ def Snin0w(op):
 	elif op == "2":
 		os.system("clear")
 		Ban()
-		print "\033[1;34m Select from Menu: \n\n[1] Listen Port \n[2] Listen Protocol\n\n[0] Exit\n\033[1;m"
+		print "\033[1;34m Select from Menu: \n\n[1] Listen Port \n[2] Listen Protocol\n\n[0] Back\n\033[1;m"
 		op_1 = raw_input ("\033[1;34mSelect> \033[1;m")
 		if op_1 == "1":
 			net_interface = raw_input ("\033[1;34mInsert your network interface: \033[1;m")
@@ -92,6 +92,14 @@ def Snin0w(op):
 					if snin.haslayer(TCP) and snin.getlayer(TCP).dport == 194 and snin.haslayer(Raw): # IRC       
 				       		print snin.getlayer(Raw).load
 						arquivo.write("%s \r\n" % snin.getlayer(Raw))
+				if filter_message == "513":
+					if snin.haslayer(TCP) and snin.getlayer(TCP).dport == 513 and snin.haslayer(Raw): # RLOGIN     
+				       		print snin.getlayer(Raw).load
+						arquivo.write("%s \r\n" % snin.getlayer(Raw))
+				if filter_message == "119":
+					if snin.haslayer(TCP) and snin.getlayer(TCP).dport == 119 and snin.haslayer(Raw): # NNTP 
+				       		print snin.getlayer(Raw).load
+						arquivo.write("%s \r\n" % snin.getlayer(Raw))
 			sniff(iface=net_interface, prn=s0ph0s_TCP, store=0) # store = 0 -> not allocate in memory
 			fil.close()
 			os.system("ifconfig %s -promisc" %(net_interface))
@@ -115,20 +123,23 @@ def Snin0w(op):
 	
 	elif  op == "3":
 		os.system("clear")
-		print "\033[1;34m Select from Menu: \n\n[1] ON MiTM \n[2] OFF MiTM\n\033[1;m"
+		print "\033[1;34m Select from Menu: \n\n[1] ON MiTM \n[2] OFF MiTM\n\n[0] Back \n\033[1;m"
 		op_3 = raw_input ("\033[1;34mSelect> \033[1;m")
 		if op_3 == "1":
 			os.system("echo “1” > /proc/sys/net/ipv4/ip_forward")
 			ip = raw_input ("\033[1;34mInsert your IP address: \033[1;m")
 			gw = raw_input ("\033[1;34mInsert your fake gateway: \033[1;m")
 			os.system("arpspoof -i %s -t %s %s" %(net_interface,ip,gw))
-		if op_1 == "2":
+		elif op_3 == "2":
 			os.system("echo “0” > /proc/sys/net/ipv4/ip_forward")
-
+		elif op_3 == "0":
+			Men()
+			
 
 	elif  op == "0":	
 		os.system("exit")
-		
+			
 
-op = Men()
-Snin0w(op)
+Men()
+
+
