@@ -16,8 +16,7 @@ Tool development to monitoring and capture packets in local area networks.
 - Capture/Filter packets 
 - Capture/Filter protocol 
 - Capture credential
-- Attack ARP Poisoning
-- Attack Main in The Middle(MiTM)
+- Attack ARP Poisoning (MiTM)
 
 # Functionality
 List of the filter protocols/packets:
