@@ -28,7 +28,7 @@ def Men():
 def Snin0w(op):
 	if op == "1":
 		net_interface = raw_input ("\033[1;34mInsert your network interface: \033[1;m")
-		fil = open("sniffer_output.cap", "a") # creating log file
+		fil = open("sniffer_output", "a") # creating log file
 		os.system("ifconfig %s promisc"%(net_interface)) # promisc mode
 
 		def s0ph0s_TCP(snin):
@@ -48,7 +48,7 @@ def Snin0w(op):
 		if op_1 == "1":
 			net_interface = raw_input ("\033[1;34mInsert your network interface: \033[1;m")
 			filter_message = raw_input("\033[1;34mInsert Port: \033[1;m")
-			fil = open("sniffer_output.cap", "a") # creat log file
+			fil = open("sniffer_output", "a") # creat log file
 			os.system("ifconfig %s promisc"%(net_interface))
 
 			def s0ph0s_TCP(snin):
