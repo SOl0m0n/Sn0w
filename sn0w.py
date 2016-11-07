@@ -139,7 +139,12 @@ def Snin0w(op):
 	elif  op == "0":	
 		os.system("exit")
 			
+try:
+        Men()
+except KeyboardInterrupt:
+        print "\033[1;34m \n\nFinishing...\nBye :) \033[1;m"
 
-Men()
+      
+
 
 
